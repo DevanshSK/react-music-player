@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // Import styles
 import "./styles/app.scss";
 // Adding components
@@ -22,7 +22,7 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
       />
-      <Library songs={songs} />
+      <Library songs={songs} setCurrentSong={setCurrentSong} />
     </div>
   );
 }

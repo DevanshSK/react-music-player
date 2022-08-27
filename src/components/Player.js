@@ -10,6 +10,11 @@ import {
 const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
   // Ref
   const audioRef = useRef(null); // Links audio tag
+  //State
+  const [songInfo, setSongInfo] = useState({
+    currentTime: 0,
+    duration: 0,
+  });
 
   //Event Handlers
   const playSongHandler = () => {
@@ -23,11 +28,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
       setIsPlaying(!isPlaying); //Toggles the state
     }
   };
-  const timeUpdateHandler = (e) => {
-    let current = e.target.currentTime;
-    let duration = e.target.duration;
-    setSongInfo({ ...songInfo, currentTime: current, duration });
-  };
+
   const getTime = (time) => {
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
@@ -37,17 +38,17 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
     audioRef.current.currentTime = e.target.value;
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
-
-  // State
-  const [songInfo, setSongInfo] = useState({
-    currentTime: 0,
-    duration: 0,
-  });
+  //Functions handlers
+  const timeUpdateHandler = (e) => {
+    let current = e.target.currentTime;
+    let songDuration = e.target.duration;
+    setSongInfo({ ...songInfo, currentTime: current, duration: songDuration });
+  };
 
   return (
     <div className="player">
       <div className="time-control">
-        <p>{getTime(songInfo.currentTime)}</p>
+        <p>{getTime(songInfo.currentTime)} </p>
         <input
           min={0}
           onChange={dragHandler}
