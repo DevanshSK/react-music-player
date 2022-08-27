@@ -76,4 +76,4 @@ function chillHop() {
   ];
 }
 
-export default chillHop();
+export default chillHop;
