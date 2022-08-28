@@ -6,7 +6,6 @@ import {
   faAngleRight,
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
-import { playSong, activeState } from "../util";
 
 const Player = ({
   audioRef,
@@ -22,10 +21,21 @@ const Player = ({
   // UseEffect
   useEffect(() => {
     // Add active state
-    activeState(songs, setSongs, currentSong.id);
-
-    // Check if the song is playing
-    playSong(isPlaying, audioRef);
+    const newSongs = songs.map((song) => {
+      if (song.id === currentSong.id) {
+        return {
+          ...song,
+          active: true,
+        };
+      } else {
+        return {
+          ...song,
+          active: false,
+        };
+      }
+    });
+    setSongs(newSongs);
+    if (isPlaying) audioRef.current.play();
   }, [currentSong]);
 
   //Event Handlers
@@ -50,16 +60,18 @@ const Player = ({
     audioRef.current.currentTime = e.target.value;
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
-  const skipTrackHandler = (direction) => {
+  const skipTrackHandler = async (direction) => {
     let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     if (direction === "skip-forward") {
-      setCurrentSong(songs.at((currentIndex + 1) % songs.length));
+      await setCurrentSong(songs.at((currentIndex + 1) % songs.length));
       console.log((currentIndex + 1) % songs.length);
     }
     if (direction === "skip-back") {
-      setCurrentSong(songs.at((currentIndex - 1) % songs.length));
+      await setCurrentSong(songs.at((currentIndex - 1) % songs.length));
       console.log((currentIndex - 1) % songs.length);
     }
+    audioRef.current.play();
+    audioRef.current.play();
   };
 
   // Adding styles
