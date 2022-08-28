@@ -31,25 +31,23 @@ function App() {
     const roundedCurrent = Math.round(current);
     const roundedDuration = Math.round(songDuration);
     const animation = Math.round((roundedCurrent / roundedDuration) * 100);
-    console.log(songInfo.animationPercentage);
     setSongInfo({
       ...songInfo,
       currentTime: current,
       duration: songDuration,
       animationPercentage: animation,
     });
+    if (isPlaying) audioRef.current.play();
   };
 
   const songEndHandler = async () => {
     let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     await setCurrentSong(songs.at((currentIndex + 1) % songs.length));
-    if (isPlaying) {
-      audioRef.current.play();
-    }
+    if (isPlaying) audioRef.current.play();
   };
 
   return (
-    <div className="App">
+    <div className={`App ${libraryStatus ? "library-active" : ""}`}>
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Song currentSong={currentSong} />
       <Player
