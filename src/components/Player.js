@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -6,6 +6,7 @@ import {
   faAngleRight,
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
+import { playSong, activeState } from "../util";
 
 const Player = ({
   audioRef,
@@ -16,7 +17,17 @@ const Player = ({
   songInfo,
   songs,
   setCurrentSong,
+  setSongs,
 }) => {
+  // UseEffect
+  useEffect(() => {
+    // Add active state
+    activeState(songs, setSongs, currentSong.id);
+
+    // Check if the song is playing
+    playSong(isPlaying, audioRef);
+  }, [currentSong]);
+
   //Event Handlers
   const playSongHandler = () => {
     if (isPlaying) {
@@ -62,7 +73,7 @@ const Player = ({
           value={songInfo.currentTime}
           type="range"
         />
-        <p>{getTime(songInfo.duration)}</p>
+        <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
       </div>
       <div className="play-control">
         <FontAwesomeIcon
