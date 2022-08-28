@@ -14,7 +14,7 @@ h3,h4{
   color: rgb(100, 100, 100)
 }
 
-@import './player';
-@import './song';
-@import './library';
-@import './nav';
+@import '../styles/player';
+@import '../styles/song';
+@import '../styles/library';
+@import '../styles/nav';

@@ -10,7 +10,7 @@ function chillHop() {
       cover: "https://i.scdn.co/image/ab67616d0000b273c7ca2ada3536de8f9d570732",
       id: uuidv4(),
       active: true,
-      color: ["#3f564e", "#91a390"],
+      color: ["#b6915a", "#fcdf67"],
       audio: "https://mp3.chillhop.com/serve.php/?mp3=41890",
     },
     {
@@ -20,7 +20,7 @@ function chillHop() {
       cover: "https://i.scdn.co/image/ab67616d0000b27326b04e87d8297b1b507c2cd8",
       id: uuidv4(),
       active: false,
-      color: ["#be4e2b", "#fc7203"],
+      color: ["#f67f00", "#febe36"],
       audio: "https://mp3.chillhop.com/serve.php/?mp3=36925",
     },
     {
@@ -30,7 +30,7 @@ function chillHop() {
       cover: "https://i.scdn.co/image/ab67616d0000b27368b3919dab921f1452202bb0",
       id: uuidv4(),
       active: false,
-      color: ["#99412b", "#bc9631"],
+      color: ["#f3684a", "#ffd245"],
       audio: "https://mp3.chillhop.com/serve.php/?mp3=41956",
     },
     {
@@ -70,7 +70,7 @@ function chillHop() {
       cover: "https://i.scdn.co/image/ab67616d0000b273e5852cd50201ae82191cc7ba",
       id: uuidv4(),
       active: false,
-      color: ["#051223", "#a9847c"],
+      color: ["#264d6c", "#a9847c"],
       audio: "https://mp3.chillhop.com/serve.php/?mp3=32860",
     },
   ];
