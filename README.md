@@ -19,7 +19,6 @@ This is a music player built on the [React.JS](https://reactjs.org/) library.
 ### Screenshot
 
 ![](./screenshots/preview-pc.png)
-![](./screenshots/preview-mobile.png)
 
 ### Links
 
